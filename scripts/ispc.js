@@ -14,6 +14,7 @@ function IsPC() {
 	}
 function showscorePC()
 {
+	document.write('		<div class="col-md-4" id = "right-column">');
 	document.write('		<div class = "game-controller" id = "start-game" onclick="start()">START</div>');
 	document.write('				<div class = "game-controller" id = "end-game" onclick="end()">END</div>');
 	document.write('				<div id = "score">');
@@ -23,7 +24,7 @@ function showscorePC()
 	document.write('					<div id = "show-percentage">');
 	document.write('						PERCENTAGE<br> <span id="percentageSpan">0<span>%');
 	document.write('					</div>');
-	document.write('				</div>');
+	document.write('				</div></div>');
 }
 if(IsPC()==true)
 	showscorePC();
