@@ -4,30 +4,43 @@
 	<meta charset = "utf-8">
 	<meta name = "viewport" content = "width=device-width initial-scale=1">
 	<script src = "scripts/jquery.js"></script>
+	
 	<link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-	<link rel = "stylesheet" href = "stylesheet.css">
 	<script src = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	
+	<link rel = "stylesheet" href = "stylesheet.css">
+
+	<script src= "scripts/checkpc.js"></script>
 	<script src= "scripts/bootbox.js"></script>
 </head>
 
 <body id = "background">
 
 	<script src = "scripts/navigation.js"></script>
-
+	
 	<div class="container-fluid">
-		<h1 id = "title">Game Of Life</h1>
-
+		<script type="text/javascript">
+			if(checkDevice() == 0)
+				document.write('<h1 id = "title">Game Of Life</h1>');
+		</script>
 		<div class="row">
 			<div class="col-md-7" style="" id = "1">
-				<script src="scripts/notpc.js"></script>
-				<div class="container" style="width:100%;text-align:center;height:520px">
-					<div id="map" style="position:relative;margin:auto;width:502px;height:502px;background-color:#fff;border: 1px solid #000;"></div>
+				<script src="scripts/showscorenotpc.js"></script>
+
+				<script type="text/javascript">
+					if(checkDevice()!=1)
+						document.write('<div class="container" style="width:100%;text-align:center;height:545px;padding-top:25px">');
+					else
+						document.write('<div class="container" style="width:100%;text-align:center;height:320px">');
+				</script>
+					<div id="map" style="position:relative;margin:auto;background-color:#fff;border: 1px solid #000;"></div>
 				</div>
 			</div>
-				<script src="scripts/ispc.js"></script>
+			<script src="scripts/showscoreispc.js"></script>
 		</div>
+		<script src = "scripts/controller.js"></script>
+				
 	</div>
-	<script src = "scripts/controller.js"></script>
 </body>
 </html>

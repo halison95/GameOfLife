@@ -3,12 +3,14 @@ var loopTime = 500; // 循环时间，ms
 var timerID = undefined;	//计时器标记
 var isSelecting = false;	//True:正在单击选择状态中 False：反之
 
-var isPc = IsPC();			//是否为PC态
+var device = checkDevice();			//是否为PC态
 
-var length = isPc ? 50 : 30;		//棋盘格边长
+var length = device == 1 ? 30 : 50;		//棋盘格边长
 var lengthPlus1 = length + 1;		//边长+1
 var lengthPlus2 = length + 2;		//边长+2
 var lengthPixel = length * 10;		//屏幕显示边像素个数
+
+
 
 $('#map').css("height", lengthPixel + "");		//外方框宽度
 $('#map').css("width", lengthPixel + "");
@@ -92,10 +94,11 @@ function timer() {
 
 //按下START按钮触发
 function start() {
+	//document.write(""+lengthPixel);
 	if(isSelecting) {
 		startManually();
 	}
-	else if(isPc){
+	else if(device == 0){
 		//PC端会选择Randomly或者Manually
 		bootbox.dialog(
 		{
@@ -135,7 +138,7 @@ function start() {
 			}
 		});
 	}
-	//手机端只有Randomly（手动操作方式不可行）
+	//手机平板端只有Randomly（手动操作方式格子太小不可行）
 	else {
 		bootbox.prompt("Type in a number in range (0,1).", function(result) {
 			if (result === null || isNaN(result) || result < 0 || result > 1) {
@@ -201,12 +204,13 @@ function end() {
 	clearTimeout(timerID);
 }
 
+/*
 //判断是否为PC端，返回True则是PC端
 function IsPC() {
     var userAgentInfo = navigator.userAgent;
     var Agents = ["Android", "iPhone",
-                "SymbianOS", "Windows Phone",
-                "iPad", "iPod"];
+                "SymbianOS", "Windows Phone"];
+//                ,"iPad", "iPod"];
     var flag = true;
     for (var v = 0; v < Agents.length; v++) {
         if (userAgentInfo.indexOf(Agents[v]) > 0) {
@@ -216,3 +220,4 @@ function IsPC() {
     }
     return flag;
 }
+*/
