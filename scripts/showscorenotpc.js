@@ -1,4 +1,7 @@
-
+/**
+ * This function is for writing the START/END buttons and showing the results in html files
+ * if the user device is a phone.
+ */
 function showscore()
 {
 	document.write('	<div id = "score">');

@@ -1,4 +1,7 @@
-
+/**
+ * This function is for writing the START/END buttons and showing the results in html files
+ * if the user device is a pad or PC.
+ */
 function showscorePC()
 {
 	document.write('		<div class="col-md-4" id = "right-column">');
